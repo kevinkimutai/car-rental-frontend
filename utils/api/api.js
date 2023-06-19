@@ -13,12 +13,9 @@ export const GETCARDATAAPI = async (make, model, fuelType, limit, year) => {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    console.log(result);
 
     return result;
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 };
 
 export const GETIMAGEAPI = (make, model, year, fuelType, paint, angle) => {

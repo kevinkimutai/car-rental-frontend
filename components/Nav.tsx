@@ -3,7 +3,7 @@ import { LuUser, LuShoppingCart } from "react-icons/lu";
 
 const Nav = () => {
   return (
-    <section className="flex justify-between items-center px-4 py-2 sticky top-0 bg-white shadow-md">
+    <section className="flex justify-between items-center px-4 py-2 sticky top-0 bg-white shadow-md z-50">
       {/*LOGO */}
       <h2 className="font-bold text-lg">Vehire</h2>
 

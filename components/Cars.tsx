@@ -12,8 +12,6 @@ type componentProps = {
 const Cars = (props: componentProps) => {
   const router = useRouter();
   const handleSubmit = (make: string, model: string, fuel: any) => {
-    console.log(make, model, fuel);
-
     if (make === "" && model === "") {
       return alert("missing filter/search fields!!");
     }
