@@ -1,6 +1,7 @@
 import { Banner, Cars, Footer } from "@/components";
 import { GETCARDATAAPI } from "../utils/api/api";
 import { useEffect, useState } from "react";
+import Nav from "@/components/Nav";
 
 export default async function Home({ searchParams }: any) {
   const { make, model, fuel, limit } = searchParams;
@@ -15,6 +16,7 @@ export default async function Home({ searchParams }: any) {
 
   return (
     <main className="h-screen">
+      <Nav />
       <Banner />
       <Cars data={carData} />
       <Footer />
