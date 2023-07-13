@@ -15,7 +15,7 @@ export default async function Home({ searchParams }: any) {
   );
 
   return (
-    <main className="h-screen">
+    <main className="h-full">
       <Nav />
       <Banner />
       <Cars data={carData} />

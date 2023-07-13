@@ -6,8 +6,8 @@ import Link from "next/link";
 
 const Banner = () => {
   return (
-    <section className="flex justify-center items-center flex-col sm:flex-row px-4 sm:px-8 md:px-32 min-h-screen">
-      <div className="w-full mt-[10vh] sm:mt-0 mb-8 sm:mb-0 sm:w-2/5">
+    <section className="flex justify-center items-center flex-col sm:flex-row px-4 sm:px-8 md:px-32 h-fit md:h-full">
+      <div className="w-full mt-[8vh] sm:mt-0 mb-8 sm:mb-0 sm:w-2/5">
         <h1 className="text-4xl mb-4 font-bold">
           <div className="mb-2">
             Hire Any <span className="text-blue-600">Car</span>
