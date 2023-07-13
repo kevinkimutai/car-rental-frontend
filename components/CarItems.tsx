@@ -17,7 +17,7 @@ const CarItems = (props: ComponentProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className=" max-w-[15rem] mx-2 bg-blue-100 rounded-lg shadow mb-6  flex flex-col justify-start  p-4">
+      <div className="max-w-[25rem] sm:max-w-[15rem] mx-2 bg-blue-100 rounded-lg shadow mb-6  flex flex-col justify-start  p-4">
         <h2 className="mb-2 capitalize font-semibold text-lg text-slate-700">
           {props.data.make} {props.data.model}
         </h2>
