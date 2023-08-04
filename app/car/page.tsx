@@ -1,4 +1,5 @@
-"use strict";
+//@ts-nocheck
+
 "use client";
 
 import React, { useState } from "react";
@@ -8,7 +9,7 @@ import ImgBg from "../../public/bgPattern2.jpg";
 import { useSearchParams } from "next/navigation";
 import { CarImage } from "@/components";
 
-const page = () => {
+const page: React.FC = () => {
   const params = useSearchParams();
   const city_mpg = params?.get("city_mpg");
   const car_class = params?.get("class");
@@ -24,6 +25,7 @@ const page = () => {
   const year = params?.get("year");
   const paint = params?.get("paint");
 
+  //@ts-ignore
   const [mainImg, setMainImg] = useState(23);
   const clickHandler = (num: number) => {
     setMainImg(num);

@@ -70,10 +70,9 @@ export const getRandomPaintDescription = () => {
   return paintDescriptions[randomIndex];
 };
 
-export const calculateDailyRate = ( year, cc) => {
+export const calculateDailyRate = (year, cc) => {
   // Arbitrary base daily rate
   const baseDailyRate = 18;
-
 
   // Arbitrary depreciation rate
   const depreciationRate = 0.05;
@@ -87,13 +86,17 @@ export const calculateDailyRate = ( year, cc) => {
   const extraYearCharge = yearsDifference * 10;
 
   // Calculate the depreciated value of the car
-  const depreciatedValue = baseDailyRate * (1 - depreciationRate) * (currentYear - year);
+  const depreciatedValue =
+    baseDailyRate * (1 - depreciationRate) * (currentYear - year);
 
   // Calculate the total daily rate including extras
-  const dailyRate = Math.max(depreciatedValue + extraCCCharge + extraYearCharge, 20);
+  const dailyRate = Math.max(
+    depreciatedValue + extraCCCharge + extraYearCharge,
+    20
+  );
 
   return Math.ceil(dailyRate);
-}
+};
 
 // Example usage:
 const dailyRate = calculateDailyRate("Tesla", 2020, 1500, "Model 3");

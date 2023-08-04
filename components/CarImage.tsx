@@ -10,7 +10,7 @@ type componentProps = {
   angle: number;
   paint: string;
   zindex?: boolean;
-  onclick?: (angle: number) => null;
+  onclick?: (angle: number) => void;
 };
 
 const CarImage = ({
@@ -33,6 +33,7 @@ const CarImage = ({
         height={500}
         className="object-contain w-full cursor-pointer"
         onClick={() => {
+          //@ts-ignore
           onclick(angle);
         }}
       />

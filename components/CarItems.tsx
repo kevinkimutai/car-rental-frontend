@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import HeroImg from "../public/toyota-landcruiser-hero-removebg-preview.png";
 import Image from "next/image";
 import CarImage from "./CarImage";
-import { getRandomPaintDescription,calculateDailyRate } from "@/utils/api/api";
+import { getRandomPaintDescription, calculateDailyRate } from "@/utils/api/api";
 import CarModal from "./CarModal";
 import Link from "next/link";
 
@@ -17,11 +17,13 @@ type ComponentProps = {
 const CarItems = (props: ComponentProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [paint, setPaint] = useState("");
-    const [dailyRate, setDailyRate] = useState();
+  const [dailyRate, setDailyRate] = useState<number>();
 
   useEffect(() => {
     setPaint(getRandomPaintDescription());
-    setDailyRate(calculateDailyRate(props.data.year,(+props.data.displacement/100)||12));
+    setDailyRate(
+      calculateDailyRate(props.data.year, +props.data.displacement / 100 || 12)
+    );
   }, []);
 
   return (
@@ -69,9 +71,7 @@ const CarItems = (props: ComponentProps) => {
               alt=""
               className="mb-2"
             />
-            <p className="text-sm text-slate-600">
-              {props.data.drive}
-            </p>
+            <p className="text-sm text-slate-600">{props.data.drive}</p>
           </div>
           <div className="flex justify-center items-center flex-col ">
             <Image
