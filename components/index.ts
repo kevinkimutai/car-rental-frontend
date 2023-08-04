@@ -8,6 +8,10 @@ import { default as CarItems } from "./CarItems";
 import { default as CarImage } from "./CarImage";
 import { default as CarFilterForm } from "./CarFilterForm";
 import { default as CarModal } from "./CarModal";
+import { default as CarDataPage } from "./CarDataPage";
+import { default as Nav } from "./Nav";
+import { default as Video } from "./Video";
+import { default as EVCars } from "./EVCars";
 
 export {
   Banner,
@@ -20,4 +24,8 @@ export {
   CarImage,
   CarFilterForm,
   CarModal,
+  CarDataPage,
+  Nav,
+  Video,
+  EVCars,
 };

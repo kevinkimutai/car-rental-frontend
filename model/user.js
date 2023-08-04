@@ -49,16 +49,9 @@ export const getUserById = (userId, callBack) => {
 
 export const createUser = (data, callBack) => {
   pool.query(
-    `INSERT INTO users(fname, lname, email, password,phone_number,role_id) 
-                values(?,?,?,?,?,?)`,
-    [
-      data.fname,
-      data.lname,
-      data.email,
-      data.password,
-      data.phone_number,
-      data.role_id,
-    ],
+    `INSERT INTO users(fname, lname, email, password,phone_number) 
+                values(?,?,?,?,?)`,
+    [data.fname, data.lname, data.email, data.password, data.phone_number],
     (error, results, fields) => {
       if (error) {
         callBack(error);

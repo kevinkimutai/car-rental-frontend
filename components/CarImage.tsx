@@ -10,6 +10,7 @@ type componentProps = {
   angle: number;
   paint: string;
   zindex?: boolean;
+  onclick?: (angle: number) => null;
 };
 
 const CarImage = ({
@@ -20,16 +21,20 @@ const CarImage = ({
   angle,
   paint,
   zindex,
+  onclick,
 }: componentProps) => {
   const srcUrl = GETIMAGEAPI(make, model, year, fuel_type, paint, angle);
   return (
-    <div className={`${zindex ? "z-20" : ""}`}>
+    <div className={`w-full ${zindex ? "z-20" : "z-10"}`}>
       <Image
         src={srcUrl}
         alt="car"
         width={500}
-        height={250}
-        className="object-contain w-full"
+        height={500}
+        className="object-contain w-full cursor-pointer"
+        onClick={() => {
+          onclick(angle);
+        }}
       />
     </div>
   );

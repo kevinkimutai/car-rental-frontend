@@ -5,6 +5,7 @@ import { CarDataApiTypes, fuels, yearsOfProduction } from "@/constants";
 import CarItems from "./CarItems";
 import CarFilterForm from "./CarFilterForm";
 import { useRouter } from "next/navigation";
+import CarDataPage from "./CarDataPage";
 
 type componentProps = {
   data: CarDataApiTypes[];
@@ -39,21 +40,22 @@ const Cars = (props: componentProps) => {
   };
 
   return (
-    <section className="px-4 sm:px-8 md:px-32 py-8" id="car-section">
-      <h1 className="font-bold text-2xl mb-2">Discover Our Cars.</h1>
-      <p className="text-slate-500 text-md mb-4">
-        Search a wide selection of rental cars tailored to your needs below.
-      </p>
+    <>
+      <section className="px-4 sm:px-8 md:px-32 py-8" id="car-section">
+        <h1 className="font-bold text-2xl mb-2">Discover Our Cars.</h1>
+        <p className="text-slate-500 text-md mb-4">
+          Search a wide selection of rental cars tailored to your needs below.
+        </p>
 
-      <CarFilterForm submit={handleSubmit} />
-      <div className="flex justify-center items-center w-full">
-        <div className="flex  flex-wrap justify-center items-center w-full">
-          {props.data?.map((item: CarDataApiTypes) => (
-            <CarItems key={item.model} data={item} />
-          ))}
+        <CarFilterForm submit={handleSubmit} />
+        <div className="flex justify-center items-center w-full">
+          <div className="flex  flex-wrap justify-center items-center w-full">
+            {props.data?.map((item: CarDataApiTypes) => (
+              <CarItems key={item.model} data={item} />
+            ))}
+          </div>
         </div>
-      </div>
-      {/* <div className="flex justify-center items-center mt-6">
+        {/* <div className="flex justify-center items-center mt-6">
         <button
           className="text-md text-white bg-gray-500 px-4 py-2 rounded-3xl"
           onClick={handleLimit}
@@ -61,7 +63,9 @@ const Cars = (props: componentProps) => {
           More Cars
         </button>
       </div> */}
-    </section>
+      </section>
+    
+    </>
   );
 };
 

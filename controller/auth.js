@@ -1,4 +1,4 @@
-import { createUser } from "../model/user";
+import { createUser, getUserByEmail } from "../model/user";
 import bcrypt from "bcryptjs";
 import { generateRefreshToken, generateAccessToken } from "../utils/token";
 import { jwt } from "jsonwebtoken";
@@ -29,7 +29,7 @@ export const signUp = async (req, res) => {
     return res.status(404).json({ status: "error", message: "missing inputs" });
   }
 
-  getUserByUserEmail(email, async (err, results) => {
+  getUserByEmail(email, async (err, results) => {
     if (err) {
       console.log(err);
 
@@ -48,6 +48,7 @@ export const signUp = async (req, res) => {
     ///hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPwd = await bcrypt.hash(password, salt);
+    console.log("HASHED", hashedPwd);
 
     const data = { password: hashedPwd, ...req.body };
 
@@ -97,12 +98,10 @@ export const login = async (req, res) => {
       httpOnly: true, //accessible only by web server
       secure: true, //https
       sameSite: "None", //cross-site cookie
-      maxAge: 7 * 24 * 60 * 60 * 1000, //cookie expiry: set to match rT
+      maxAge: 30 * 24 * 60 * 60 * 1000, //cookie expiry: set to match rT
     });
 
     return res.json({
-      success: true,
-      message: "login successfully",
       token: accessToken,
     });
   });

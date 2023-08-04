@@ -1,12 +1,13 @@
 import React from "react";
 import HeroBg from "../public/hero-bg.png";
-import HeroImg from "../public/toyota-landcruiser-hero-removebg-preview.png";
+import HeroImg1 from "../public/toyota-landcruiser-hero-removebg-preview.png";
+
 import Image from "next/image";
 import Link from "next/link";
 
 const Banner = () => {
   return (
-    <section className="flex justify-center items-center flex-col sm:flex-row px-4 sm:px-8 md:px-32 h-fit md:h-full">
+    <section className="flex justify-center items-center flex-col sm:flex-row px-4 sm:px-8 md:px-32 h-fit md:h-screen">
       <div className="w-full mt-[8vh] sm:mt-0 mb-8 sm:mb-0 sm:w-2/5">
         <h1 className="text-4xl mb-4 font-bold">
           <div className="mb-2">
@@ -39,7 +40,7 @@ const Banner = () => {
 
         {/* First Image */}
         <div className="relative h-full w-full">
-          <Image src={HeroImg} alt="" className="object-contain" />
+          <Image src={HeroImg1} alt="" className="object-contain" />
         </div>
       </div>
     </section>

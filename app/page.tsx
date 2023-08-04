@@ -1,4 +1,4 @@
-import { Banner, Cars, Footer } from "@/components";
+import { Banner, Cars, EVCars, Footer, Video } from "@/components";
 import { GETCARDATAAPI } from "../utils/api/api";
 import { useEffect, useState } from "react";
 import Nav from "@/components/Nav";
@@ -16,9 +16,10 @@ export default async function Home({ searchParams }: any) {
 
   return (
     <main className="h-full">
-      <Nav />
       <Banner />
       <Cars data={carData} />
+      <Video />
+      <EVCars />
       <Footer />
     </main>
   );
