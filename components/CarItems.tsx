@@ -3,7 +3,6 @@
 import { CarDataApiTypes } from "@/constants";
 import React, { useEffect, useState } from "react";
 
-import HeroImg from "../public/toyota-landcruiser-hero-removebg-preview.png";
 import Image from "next/image";
 import CarImage from "./CarImage";
 import { getRandomPaintDescription, calculateDailyRate } from "@/utils/api/api";
@@ -24,7 +23,7 @@ const CarItems = (props: ComponentProps) => {
     setDailyRate(
       calculateDailyRate(props.data.year, +props.data.displacement / 100 || 12)
     );
-  }, []);
+  }, [props.data.year, props.data.displacement]);
 
   return (
     <>
