@@ -18,36 +18,39 @@ const CarFilterForm = (props: componentProps) => {
   const [fuel, setFuel] = useState(fuels[0]);
 
   return (
-    <form
-      className="flex flex-wrap justify-end mb-6"
-      onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        props.submit(make, model, fuel);
-      }}
-    >
-      <InputContainer>
-        <CarComboBox make={make} setMake={setMake} />
-      </InputContainer>
-      <InputContainer>
-        <ModelInput model={model} setModel={setModel} />
-      </InputContainer>
+    <>
+      <form
+        className="flex flex-wrap mx-auto justify-between items-center w-full lg:w-4/5  bg-slate-100 rounded-3xl mb-2 "
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+          e.preventDefault();
+          props.submit(make, model, fuel);
+        }}
+      >
+        <InputContainer>
+          <CarComboBox make={make} setMake={setMake} />
+        </InputContainer>
+        <InputContainer>
+          <ModelInput model={model} setModel={setModel} />
+        </InputContainer>
+        {/* <ListBox data={fuels} fuel={fuel} setFuel={setFuel} /> */}
+        {/* <ListBox data={yearsOfProduction} setFuelType={props.setFuelType} /> */}
+        <div className="flex ml-auto md:ml-0 py-2 px-4">
+          <button
+            type="submit"
+            className="flex justify-center items-center  px-2 py-1 rounded-md"
+          >
+            <span className="mr-2">search</span>
+            <Image
+              src={"/magnifying-glass.svg"}
+              width={30}
+              height={30}
+              alt={"search-icon"}
+            />
+          </button>
+        </div>
+      </form>
       <ListBox data={fuels} fuel={fuel} setFuel={setFuel} />
-      {/* <ListBox data={yearsOfProduction} setFuelType={props.setFuelType} /> */}
-      <div className="flex justify-end w-full items-end mb-6">
-        <button
-          type="submit"
-          className="self-end flex justify-center items-center border border-slate-300 bg-slate-300 px-2 py-1 rounded-md"
-        >
-          <span className="mr-2">search</span>
-          <Image
-            src={"/magnifying-glass.svg"}
-            width={30}
-            height={30}
-            alt={"search-icon"}
-          />
-        </button>
-      </div>
-    </form>
+    </>
   );
 };
 

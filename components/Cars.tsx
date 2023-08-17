@@ -10,6 +10,7 @@ import CarDataPage from "./CarDataPage";
 type componentProps = {
   data: CarDataApiTypes[];
 };
+
 const Cars = (props: componentProps) => {
   const router = useRouter();
   const handleSubmit = (make: string, model: string, fuel: any) => {
@@ -64,7 +65,6 @@ const Cars = (props: componentProps) => {
         </button>
       </div> */}
       </section>
-    
     </>
   );
 };

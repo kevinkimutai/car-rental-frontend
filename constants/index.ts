@@ -110,3 +110,8 @@ export type CarDataApiTypes = {
   transmission: string;
   year: number;
 };
+
+export const URL =
+  process.env.NODE_ENV === "production"
+    ? "https://vehire-backend.onrender.com/api/v1"
+    : "http://localhost:4500/api/v1";

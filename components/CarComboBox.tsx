@@ -29,7 +29,7 @@ function CarComboBox(props: componentProps) {
             src="/car-logo.svg"
             width={20}
             height={20}
-            className=""
+            className="text-slate-600"
             alt="car logo"
           />
         </Combobox.Button>

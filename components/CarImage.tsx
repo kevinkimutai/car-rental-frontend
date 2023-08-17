@@ -6,7 +6,7 @@ type componentProps = {
   make: string;
   model: string;
   year: number;
-  fuel_type: string;
+  fuel_type?: string;
   angle: number;
   paint: string;
   zindex?: boolean;
@@ -23,6 +23,7 @@ const CarImage = ({
   zindex,
   onclick,
 }: componentProps) => {
+  //@ts-ignore
   const srcUrl = GETIMAGEAPI(make, model, year, fuel_type, paint, angle);
   return (
     <div className={`w-full ${zindex ? "z-20" : "z-10"}`}>

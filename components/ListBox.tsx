@@ -12,7 +12,7 @@ type componentProps = {
 
 const ListBox = (props: componentProps) => {
   return (
-    <div className="w-full flex justify-end items-center mb-4">
+    <div className="mr-0 lg:mr-[10%] flex justify-end items-center mb-16">
       <div className="w-1/2 sm:w-1/4  border border-slate-300">
         <Listbox value={props.fuel} onChange={props.setFuel}>
           <div className="relative w-full ">

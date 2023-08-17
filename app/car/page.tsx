@@ -1,33 +1,47 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 // import Img from "../../public/toyota-landcruiser-hero-removebg-preview.png";
 import ImgBg from "../../public/bgPattern2.jpg";
 import { useSearchParams } from "next/navigation";
 import { CarImage } from "@/components";
 
+import Link from "next/link";
+import useCarStore from "@/store/store";
+import { GETIMAGEAPI } from "@/utils/api/api";
+
 const SpecificCarPage = () => {
+  const updateCarOrders = useCarStore((state) => state.updateCarOrders);
+
   const params = useSearchParams();
   const city_mpg = params?.get("city_mpg");
-  const car_class = params?.get("class");
+  const car_class = params?.get("class")!;
   const combination_mpg = params?.get("combination_mpg");
   const cylinders = params?.get("cylinders");
   const displacement = params?.get("displacement");
   const drive = params?.get("drive");
-  const fuel_type = params?.get("fuel_type");
+  const fuel_type = params?.get("fuel_type")!;
   const highway_mpg = params?.get("highway_mpg");
-  const make = params!.get("make");
-  const model = params?.get("model");
+  const make = params!.get("make")!;
+  const model = params?.get("model")!;
   const transition = params?.get("transition");
-  const year = params?.get("year");
-  const paint = params?.get("paint");
+  const year = params?.get("year")!;
+  const paint = params?.get("paint")!;
+  const price = +params?.get("dailyRate")!;
 
   //@ts-ignore
   const [mainImg, setMainImg] = useState(23);
+  const [carImg, setCarImg] = useState<string>();
+
   const clickHandler = (num: number) => {
     setMainImg(num);
   };
+
+  useEffect(() => {
+    //@ts-ignore
+    setCarImg(GETIMAGEAPI(make, model, year, fuel_type, paint, 23));
+  }, [make, model, year, fuel_type, paint]);
 
   return (
     <section className="px-4 sm:px-8 md:px-32 py-8 flex justify-center flex-col sm:flex-row gap-2">
@@ -110,9 +124,26 @@ const SpecificCarPage = () => {
           <button className="w-1/3 py-2 text-white bg-gray-500 rounded-md">
             Back
           </button>
-          <button className="w-2/3 py-2 text-white bg-blue-600 rounded-md ">
-            Hire
-          </button>
+          <Link
+            href={"/checkout"}
+            className="w-2/3"
+            onClick={() => {
+              updateCarOrders({
+                year,
+                make,
+                model,
+                class: car_class,
+                fuel_type,
+                price,
+                paint,
+                image: carImg,
+              });
+            }}
+          >
+            <button className="w-full py-2 text-white bg-blue-600 rounded-md ">
+              Hire
+            </button>
+          </Link>
         </div>
       </div>
     </section>

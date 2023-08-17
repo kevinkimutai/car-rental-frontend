@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 export const GETCARDATAAPI = async (make, model, fuelType, limit, year) => {
   const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${make}${
     model === "" ? "" : `&model=${model}`
@@ -97,7 +99,3 @@ export const calculateDailyRate = (year, cc) => {
 
   return Math.ceil(dailyRate);
 };
-
-// Example usage:
-const dailyRate = calculateDailyRate("Tesla", 2020, 1500, "Model 3");
-console.log(`The daily hire rate for this car is $${dailyRate}.`);

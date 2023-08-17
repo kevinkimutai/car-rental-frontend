@@ -86,7 +86,7 @@ const CarItems = (props: ComponentProps) => {
         <Link
           href={{
             pathname: "/car",
-            query: { paint, ...props.data },
+            query: { paint, dailyRate, ...props.data },
           }}
         >
           <button
