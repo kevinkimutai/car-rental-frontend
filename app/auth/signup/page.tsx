@@ -47,7 +47,7 @@ const SignUp = () => {
   });
 
   const onSubmit = async ({ fname, lname, email, password }: FormData) => {
-    let url = `http://localhost:4500/api/v1/auth/signup`;
+    let url = `${URL}/auth/signup`;
 
     const requestOptions = {
       method: "POST",
