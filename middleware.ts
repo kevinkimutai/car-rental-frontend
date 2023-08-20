@@ -1,17 +1,20 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import jwt_decode from "jwt-decode";
+import { cookies } from "next/headers";
 
 type Decoded = { id: string; iat: number; exp: number };
 
 export async function middleware(request: NextRequest) {
-  const userToken = request.cookies.get("jwt")?.value;
+  const cookieStore = cookies();
+  const userToken = cookieStore.get("jwt");
+  //const userToken = request.cookies.get("jwt")?.value;
   const currentUrl = new URL(request.url);
   const redirectUrl = new URL("/auth/login", request.url);
   redirectUrl.searchParams.set("redirect", currentUrl.pathname);
 
   console.log("COOKIE", userToken);
-  console.log("REQUEST", request);
+  //console.log("REQUEST", request);
 
   if (!userToken) {
     console.log("I AM THE ONE WHO REDIRECTED 1");
@@ -19,7 +22,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  const decoded: Decoded = jwt_decode(userToken);
+  const decoded: Decoded = jwt_decode(userToken?.value);
 
   if (decoded.exp * 1000 < Date.now()) {
     console.log("I AM THE ONE WHO REDIRECTED 2");
