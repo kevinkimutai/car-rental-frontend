@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 type Decoded = { id: string; iat: number; exp: number };
 
 export async function middleware(request: NextRequest) {
-  const userToken = JSON.parse(request.cookies.get("jwt")!.value);
+  const userToken = request.cookies.get("jwt")?.value;
   const currentUrl = new URL(request.url);
   const redirectUrl = new URL("/auth/login", request.url);
   redirectUrl.searchParams.set("redirect", currentUrl.pathname);
