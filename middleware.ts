@@ -11,6 +11,7 @@ export async function middleware(request: NextRequest) {
   redirectUrl.searchParams.set("redirect", currentUrl.pathname);
 
   console.log("COOKIE", userToken);
+  console.log("HEADERS", request.headers);
 
   if (!userToken) {
     console.log("I AM THE ONE WHO REDIRECTED 1");
