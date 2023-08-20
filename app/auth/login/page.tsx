@@ -64,6 +64,7 @@ const Login = () => {
       reset();
 
       setTimeout(() => {
+        console.log("REDIRECTING", redirect);
         router.push(redirect);
       }, 3050);
     }
