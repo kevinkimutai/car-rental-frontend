@@ -5,13 +5,13 @@ import jwt_decode from "jwt-decode";
 type Decoded = { id: string; iat: number; exp: number };
 
 export async function middleware(request: NextRequest) {
-  const userToken = request.cookies.get("jwt");
+  const userToken = JSON.parse(request.cookies.get("jwt")!.value);
   const currentUrl = new URL(request.url);
   const redirectUrl = new URL("/auth/login", request.url);
   redirectUrl.searchParams.set("redirect", currentUrl.pathname);
 
   console.log("COOKIE", userToken);
-  console.log("HEADERS", request.headers);
+  console.log("REQUEST", request);
 
   if (!userToken) {
     console.log("I AM THE ONE WHO REDIRECTED 1");
@@ -19,7 +19,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  const decoded: Decoded = jwt_decode(userToken.value);
+  const decoded: Decoded = jwt_decode(userToken);
 
   if (decoded.exp * 1000 < Date.now()) {
     console.log("I AM THE ONE WHO REDIRECTED 2");
